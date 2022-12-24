@@ -72,17 +72,7 @@ const Main = () => {
                             currentPage={currentPage}
                             setCurrentPage={setCurrentPage}
                         />
-                        {/*<PaginationControl*/}
-                        {/*    page={page}*/}
-                        {/*    between={4}*/}
-                        {/*    total={250}*/}
-                        {/*    limit={20}*/}
-                        {/*    changePage={(page) => {*/}
-                        {/*        setPage(page);*/}
-                        {/*        console.log(page)*/}
-                        {/*    }}*/}
-                        {/*    ellipsis={1}*/}
-                        {/*/>*/}
+                       
                     </div>
                 </div>
             </div>
