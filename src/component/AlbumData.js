@@ -1,36 +1,28 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Pagination from "./Pagination";
-import { PaginationControl } from 'react-bootstrap-pagination-control';
-import {Link} from "react-router-dom";
-import Layout from "./Layout";
-// import { Pagination } from 'react-bootstrap';
 
-const Main = () => {
+const AlbumData = (props) => {
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const [recordsPerPage] = useState(400);
+    const [recordsPerPage] = useState(20);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const response = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=2`);
-                const response = await axios.get(`https://jsonplaceholder.typicode.com/photos`);
-                console.log(response.data.length);
-                setData(response.data);
+                const response = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=${props.albumId}`);
 
+                setData(response.data);
             } catch (error) {
                 setError(error);
             } finally {
                 setLoading(false);
             }
         };
-
         fetchData();
-    }, []);
+    }, [props.albumId]);
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
@@ -69,17 +61,6 @@ const Main = () => {
                             currentPage={currentPage}
                             setCurrentPage={setCurrentPage}
                         />
-                        {/*<PaginationControl*/}
-                        {/*    page={page}*/}
-                        {/*    between={4}*/}
-                        {/*    total={250}*/}
-                        {/*    limit={20}*/}
-                        {/*    changePage={(page) => {*/}
-                        {/*        setPage(page);*/}
-                        {/*        console.log(page)*/}
-                        {/*    }}*/}
-                        {/*    ellipsis={1}*/}
-                        {/*/>*/}
                     </div>
                 </div>
             </div>
@@ -87,5 +68,4 @@ const Main = () => {
         </>
     )
 }
-
-export default Main;
+export default AlbumData;

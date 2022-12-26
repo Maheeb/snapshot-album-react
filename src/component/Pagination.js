@@ -3,13 +3,16 @@ import React from 'react'
 const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
 
     const pageNumbers = [...Array(nPages + 1).keys()].slice(1)
-
+    // console.log(pageNumbers)
+    // console.log(pageNumbers.push('...'))
     const nextPage = () => {
+        // console.log(currentPage+"==="+nPages)
         if(currentPage !== nPages) setCurrentPage(currentPage + 1)
     }
     const prevPage = () => {
         if(currentPage !== 1) setCurrentPage(currentPage - 1)
     }
+    let next_text = currentPage !== pageNumbers.length ? 1 : 0;
     return (
         <nav>
             <ul className='pagination justify-content-center'>
@@ -30,14 +33,15 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
                         </a>
                     </li>
                 ))}
+                { next_text === 1  &&
                 <li className="page-item">
                     <a className="page-link"
                        onClick={nextPage}
                        href='#'>
-
                         Next
                     </a>
                 </li>
+                }
             </ul>
         </nav>
     )

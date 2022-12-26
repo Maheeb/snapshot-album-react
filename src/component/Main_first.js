@@ -3,23 +3,28 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Pagination from "./Pagination";
 import { PaginationControl } from 'react-bootstrap-pagination-control';
-import {Link} from "react-router-dom";
-import Layout from "./Layout";
 // import { Pagination } from 'react-bootstrap';
 
 const Main = () => {
+    // const [data, setData] = useState(null);
+    // const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    // const [page, setPage] = useState(1);
+    // const [totalPages, setTotalPages] = useState(null);
+    // const [hasMore, setHasMore] = useState(true);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [recordsPerPage] = useState(10);
     const [page, setPage] = useState(1)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(400);
     useEffect(() => {
+
         const fetchData = async () => {
             try {
-                // const response = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=2`);
                 const response = await axios.get(`https://jsonplaceholder.typicode.com/photos`);
-                console.log(response.data.length);
+                // console.log(response.data.length);
                 setData(response.data);
 
             } catch (error) {
@@ -34,7 +39,6 @@ const Main = () => {
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
-    // console.log(currentRecords)
     const nPages = Math.ceil(data.length / recordsPerPage)
     let p = "";
     if (loading) {
@@ -46,7 +50,6 @@ const Main = () => {
     }
     return (
         <>
-
             <div className="container">
                 {p}
                 <div className="row">
