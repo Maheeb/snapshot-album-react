@@ -7,17 +7,22 @@ import {BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes} from 
 import Main from "./component/Main";
 import Layout from "./component/Layout";
 import Album from "./pages/Album";
+import Search from "./component/Search";
+import SearchResults from "./component/SearchResults";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout/>,
-
         children: [
             { index: true, element: <Main /> },
             {
                 path: "album/:albumId",
                 element: <Album />,
+            },
+            {
+                path: "search/:searchId",
+                element: <SearchResults />,
             },
         ],
 

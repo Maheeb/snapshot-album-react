@@ -1,10 +1,13 @@
 import {Link, Outlet} from "react-router-dom";
 import App from "../App";
+import {useState} from "react";
+import Search from "./Search";
 
 const Layout = () => {
+
     return (
         <>
-
+            <Search></Search>
             <div className={'container'}>
                 <div className={'row'}>
                     <div className={'col-md-12'}>

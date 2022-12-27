@@ -13,7 +13,6 @@ const AlbumData = (props) => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=${props.albumId}`);
-
                 setData(response.data);
             } catch (error) {
                 setError(error);

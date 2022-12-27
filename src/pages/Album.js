@@ -5,16 +5,11 @@ import AlbumData from "../component/AlbumData";
 const Album = (props) => {
     let {albumId} = useParams()
 
-  return(
-      <>
-
-          <h1 className={'text-center'}>Album --- {albumId}</h1>
-
-
-         <AlbumData albumId={albumId}></AlbumData>
-
-
-      </>
-  )
+    return (
+        <>
+            <h1 className={'text-center'}>Album --- {albumId}</h1>
+            <AlbumData albumId={albumId}></AlbumData>
+        </>
+    )
 }
 export default Album;

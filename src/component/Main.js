@@ -17,7 +17,6 @@ const Main = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const response = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=2`);
                 const response = await axios.get(`https://jsonplaceholder.typicode.com/photos`);
                 console.log(response.data.length);
                 setData(response.data);
